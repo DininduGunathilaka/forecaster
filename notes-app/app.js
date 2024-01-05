@@ -1,23 +1,39 @@
 const chalk = require('chalk')
-const validator = require('validator')
-const  extractTitle = require('./notes')
+const yargs = require('yargs')
 
-const print = console.log
-const green = chalk.green
-const red = chalk.red
-const blue = chalk.blue
-const greenBold = chalk.green.bold.inverse
-const redBold = chalk.red.bold.inverse
-const blueBold = chalk.blue.inverse
+//Create add command
+yargs.command({
+    command : 'add',
+    describe : 'Add a new note',
+    handler: function(){
+        console.log('Added the new note')
+    }
+})
 
-const remainingArg=process.argv.slice(3)
-console.log(remainingArg)
-const command = process.argv[2]
-const title = extractTitle(remainingArg)
+//Create remove command
 
-if(command ==='add'| command === 'Add'){
-    print(blue('Note Added Sucessfully'))
-    print(blue('Title: ')+blueBold(title))
-}else if(command==='Remove' | command === 'remove'){
-    print(green('Note removed Successfully!'))
-}else print(red("Something went wrong"))
+yargs.command({
+    command: 'remove',
+    describe : 'Remove a note',
+    handler : function(){
+        console.log('Removing the note')
+    }
+})
+
+yargs.command({
+    command: 'list',
+    describe: 'List down the notes',
+    handler: function(){
+        console.log('Listed the notes')
+    }
+})
+
+yargs.command({
+    command: 'read',
+    describe: 'Read the notes',
+    handler: function(){
+        console.log('Read the notes')
+    }
+})
+
+console.log(yargs.argv)
