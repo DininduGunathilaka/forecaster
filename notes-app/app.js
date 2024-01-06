@@ -20,19 +20,20 @@ yargs.command({
     }
 })
 
+//Create list command
 yargs.command({
     command: 'list',
-    describe: 'List down the notes',
+    describe: 'List down all the notes',
     handler: function(){
-        console.log('Listed the notes')
+        console.log('List down all the notes')
     }
 })
 
 yargs.command({
     command: 'read',
-    describe: 'Read the notes',
+    describe: 'Read a notes',
     handler: function(){
-        console.log('Read the notes')
+        console.log('Read a notes')
     }
 })
 
