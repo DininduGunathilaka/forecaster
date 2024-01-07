@@ -1,8 +1,10 @@
 const fs = require("fs");
 const chalk = require('chalk')
+
 const getNotes = function () {
   return "Your notes...";
 };
+
 const addNotes = function (title, body) {
   const notes = loadNotes();
   const duplicateNotes = notes.filter(function(note){
@@ -14,11 +16,15 @@ const addNotes = function (title, body) {
       body:body
     })
     saveNotes(notes)
-    console.log(chalk.green('New note added!'))
+    console.log(chalk.blue('New note added!'))
   }else{
     console.log(chalk.red('Title already exists!'))
   }
 };
+
+const removeNote = function(title){
+  console.log(chalk.green(title+' note removed successfully'))
+}
 
 const saveNotes = function(notes){
   const noteJSON = JSON.stringify(notes)
@@ -38,4 +44,5 @@ const loadNotes = function () {
 module.exports = {
   getNodes: getNotes,
   addNotes: addNotes,
+  removeNote:removeNote
 };
