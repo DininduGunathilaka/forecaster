@@ -32,6 +32,17 @@ const removeNote = (title) => {
   }
 };
 
+const showAllNotes=()=>{
+  const notes=loadNotes()
+  console.log(chalk.cyan.inverse('Your Notes'))
+  notes.forEach((note)=> {
+    console.log(note.title)
+  })
+  
+  
+}
+
+
 const saveNotes = (notes) => {
   const noteJSON = JSON.stringify(notes);
   fs.writeFileSync("note.json", noteJSON);
@@ -51,4 +62,5 @@ module.exports = {
   getNodes: getNotes,
   addNotes: addNotes,
   removeNote: removeNote,
+  showAllNotes:showAllNotes
 };
